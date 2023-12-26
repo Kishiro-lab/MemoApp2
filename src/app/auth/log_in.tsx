@@ -38,7 +38,7 @@ export default function LogIn(): JSX.Element {
           onChangeText={handleChangeEmail}
           autoCapitalize="none"
           autoFocus
-          placeholder="Email Address"
+          placeholder="Email Address!!!!"
           placeholderTextColor={"#DDD"}
           keyboardType="email-address"
           textContentType="emailAddress"
