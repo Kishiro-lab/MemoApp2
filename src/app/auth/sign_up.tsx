@@ -34,12 +34,6 @@ const handlePressLogin = (): void => {
 export default function SignUp(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleChangeEmail = (text: string): void => {
-    setEmail(text);
-  };
-  const handleChangePassword = (text: string): void => {
-    setPassword(text);
-  };
 
   return (
     <View style={styles.container}>
@@ -48,7 +42,9 @@ export default function SignUp(): JSX.Element {
         <TextInput
           style={[styles.input, styles.email]}
           value={email}
-          onChangeText={handleChangeEmail}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
           autoCapitalize="none"
           autoFocus
           placeholder="Email Address"
@@ -59,7 +55,9 @@ export default function SignUp(): JSX.Element {
         <TextInput
           style={[styles.input, styles.password]}
           value={password}
-          onChangeText={handleChangePassword}
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
           autoCapitalize="none"
           placeholder="Password"
           placeholderTextColor={"#DDD"}
