@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import { router } from "expo-router";
+import { router, Link } from "expo-router";
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -26,10 +26,6 @@ const handlePress = (email: string, password: string): void => {
       console.log(code, message);
       Alert.alert(`code: ${code} message: ${message}`);
     });
-};
-
-const handlePressLogin = (): void => {
-  router.replace("/auth/log_in");
 };
 
 export default function SignUp(): JSX.Element {
@@ -73,9 +69,11 @@ export default function SignUp(): JSX.Element {
         />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <TouchableOpacity onPress={handlePressLogin}>
-            <Text style={[styles.footerText, styles.link]}>Log In.</Text>
-          </TouchableOpacity>
+          <Link href="/auth/log_in" asChild replace>
+            <TouchableOpacity>
+              <Text style={[styles.footerText, styles.link]}>Log In.</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>

@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import { router } from "expo-router";
+import { router, Link } from "expo-router";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -28,10 +28,6 @@ const handlePress = (email: string, password: string): void => {
     });
 };
 
-const handlePressSignUp = (): void => {
-  router.replace("/auth/sign_up");
-};
-
 export default function LogIn(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +44,7 @@ export default function LogIn(): JSX.Element {
           }}
           autoCapitalize="none"
           autoFocus
-          placeholder="Email Address!!!!"
+          placeholder="Email Address"
           placeholderTextColor={"#DDD"}
           keyboardType="email-address"
           textContentType="emailAddress"
@@ -73,9 +69,13 @@ export default function LogIn(): JSX.Element {
         />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
-          <TouchableOpacity onPress={handlePressSignUp}>
-            <Text style={[styles.footerText, styles.link]}>Sign up here!</Text>
-          </TouchableOpacity>
+          <Link href="/auth/sign_up" asChild replace>
+            <TouchableOpacity>
+              <Text style={[styles.footerText, styles.link]}>
+                Sign up here!
+              </Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>
