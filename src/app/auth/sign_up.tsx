@@ -8,9 +8,10 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 import Button from "../../components/Button";
 import { auth } from "../../config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const handlePress = (email: string, password: string): void => {
   // 会員登録
@@ -23,7 +24,7 @@ const handlePress = (email: string, password: string): void => {
     .catch((error) => {
       const { code, message } = error;
       console.log(code, message);
-      Alert.alert(message);
+      Alert.alert(`code: ${code} message: ${message}`);
     });
 };
 
